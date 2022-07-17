@@ -53,7 +53,7 @@ class Popular(models.Model):
     
     
     def __str__(self):
-        return self.add_popular
+        return f'{self.add_popular}'
     
     
     class Meta:
