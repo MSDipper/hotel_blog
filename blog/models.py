@@ -36,7 +36,7 @@ class Post(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=150)
     comments = models.ForeignKey("Comment", verbose_name='Коментарии', on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, blank=True, null=True)
+    category = models.ForeignKey(Category, related_name='categories', verbose_name='Категория', on_delete=models.SET_NULL, blank=True, null=True)
     tag = models.ManyToManyField(Tag, verbose_name='Теги')
 
     def __str__(self):
