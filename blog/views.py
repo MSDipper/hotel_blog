@@ -21,7 +21,7 @@ class PostListView(ListView):
 
 
 class Search(ListView):
-    paginate_by = 2
+    paginate_by = 6
     def get_queryset(self):
         return Post.objects.filter(title__icontains=self.request.GET.get("q"))
     
