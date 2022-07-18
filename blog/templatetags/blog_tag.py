@@ -16,3 +16,13 @@ def get_categories():
 def get_tags():
     ''' Вывод всех тегов '''
     return Tag.objects.all()
+
+# @register.inclusion_tag('blog/include/tags/popular_articles.html')
+# def get_popular_articles_post():
+#     return Category.objects.all()
+
+
+@register.inclusion_tag('blog/include/tags/popular_articles.html')
+def get_popular_articles_post(count=4):
+    post_list = Post.objects.order_by('id')[:count]
+    return {'post_list':post_list}

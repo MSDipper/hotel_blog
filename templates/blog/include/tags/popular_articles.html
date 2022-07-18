@@ -1,0 +1,21 @@
+
+            <div class="sidebar-box ftco-animate">
+              
+                <h3>Popular Articles</h3>
+                {% for post in post_list %}
+                  {% comment %} {% if forloop.counter <= 5 and forloop.counter > 1 %} {% endcomment %}
+                    <div class="block-21 mb-4 d-flex">
+                      <a class="blog-img mr-4" style="background-image: url({{ post.photo.url }});"></a>
+                      <div class="text">
+                        <h3 class="heading"><a href="#">{{ post.title }}</a></h3>
+                        <div class="meta">
+                          <div><a href="#"><span class="icon-calendar"></span> {{ post.create_at }}</a></div>
+                          <div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
+                          <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                        </div>
+                      </div>
+                    </div>
+                  {% comment %} {% endif %}  {% endcomment %}
+                {% endfor %}
+            </div>
+            

@@ -14,10 +14,24 @@ class PostListView(ListView):
     paginate_by = 6
     template_name = 'blog/post_list.html'
     
+    # def get_queryset(self):
+    #     return Post.objects.filter(category__slug=self.kwargs.get('slug')).select_related('category')
+
     
 # def blog_view(request):
 #     post_list = Post.objects.all()
 #     return render(request, 'blog/blog.html', {'post_list':post_list})
+
+class GetCategoryListView(ListView):
+    paginate_by = 6
+    def get_queryset(self):
+        return Post.objects.filter(category__slug=self.kwargs.get('slug')).select_related('category')
+
+
+class GetTagListView(ListView):
+    paginate_by = 6
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs.get('slug'))
 
 
 class Search(ListView):

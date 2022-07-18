@@ -84,37 +84,19 @@
               <ul class="categories">
                 {% get_categories as categories %}
                   {% for category in categories %}
-                    <li><a href="#">{{ category.name }} <span>{{ category.category_count  }}</span></a></li>
+                    <li><a href="{% url 'get_category' category.slug %}">{{ category.name }} <span>{{ category.category_count  }}</span></a></li>
                   {% endfor %}
               </ul>
             </div>
 
-            <div class="sidebar-box ftco-animate">
-              <h3>Popular Articles</h3>
-             
-              {% for post in post_list %}
-                {% if forloop.counter <= 5 and forloop.counter > 1 %}
-                  <div class="block-21 mb-4 d-flex">
-                    <a class="blog-img mr-4" style="background-image: url({{ post.photo.url }});"></a>
-                    <div class="text">
-                      <h3 class="heading"><a href="#">{{ post.title }}</a></h3>
-                      <div class="meta">
-                        <div><a href="#"><span class="icon-calendar"></span> {{ post.create_at }}</a></div>
-                        <div><a href="#"><span class="icon-person"></span> Dave Lewis</a></div>
-                        <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                      </div>
-                    </div>
-                  </div>
-                {% endif %} 
-{% endfor %}
-            </div>
+{% get_popular_articles_post count=4 %}
 
             <div class="sidebar-box ftco-animate">
               <h3>Tag Cloud</h3>
               <ul class="tagcloud">
                 {% get_tags as tags %}
                 {% for tag in tags %}
-                  <a href="#" class="tag-cloud-link">{{ tag.name }}</a>
+                  <a href="{% url 'get_tag' tag.slug %}" class="tag-cloud-link">{{ tag.name }}</a>
                 {% endfor %}
               </ul>
             </div>
