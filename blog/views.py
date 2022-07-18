@@ -1,3 +1,4 @@
+from typing import List
 from django.shortcuts import render
 from blog.models import *
 
@@ -17,3 +18,16 @@ class PostListView(ListView):
 # def blog_view(request):
 #     post_list = Post.objects.all()
 #     return render(request, 'blog/blog.html', {'post_list':post_list})
+
+
+class Search(ListView):
+    paginate_by = 6
+    def get_queryset(self):
+        return Post.objects.filter(title__icontains=self.request.GET.get("q"))
+    
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = self.request.GET.get('q')
+        return context
+        
