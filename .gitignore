@@ -11,15 +11,9 @@ db.sqlite3
 
 venv
 
-stylesheets/
-    style.css
-    style.min.css
-
-.scss
-
-javascripts/
-    plugin.js
-    plugin.min.js
+*.min.js
+*.min.css
+*.min.scss
 
 __pycache__/
 */__pycache__/
