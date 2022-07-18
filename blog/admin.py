@@ -23,4 +23,3 @@ class TagAdmin(admin.ModelAdmin):
 
 admin.site.register(Popular)
 admin.site.register(Comment)
-admin.site.register(Paragraph)

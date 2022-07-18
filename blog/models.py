@@ -74,14 +74,5 @@ class Comment(models.Model):
         verbose_name = 'Коментарий'
         verbose_name_plural = 'Коментарии'
 
-class Paragraph(models.Model):
-    text = models.TextField(max_length=500, verbose_name='Текст')
-    
-    def __str__(self):
-        return self.text
-
-    class Meta:
-        verbose_name = 'Текст'
-        verbose_name_plural = 'Текст'
 
 
