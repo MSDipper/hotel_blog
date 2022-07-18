@@ -3,11 +3,6 @@ idea
 .DS_Store
 
 *.egg-info/
-.idea
-idea
-.DS_Store
-
-*.egg-info/
 .installed.cfg
 *.egg
 
@@ -32,4 +27,3 @@ doc
 home.rst
 make.bat
 Makefile
-
