@@ -8,6 +8,11 @@ class HomeListView(ListView):
     template_name = 'hotel/home.html'
 
 
-def blog_view(request):
-    post_list = Post.objects.all()
-    return render(request, 'blog/blog.html', {'post_list':post_list})
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/post_list.html'
+    
+    
+# def blog_view(request):
+#     post_list = Post.objects.all()
+#     return render(request, 'blog/blog.html', {'post_list':post_list})

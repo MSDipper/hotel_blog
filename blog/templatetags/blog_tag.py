@@ -8,5 +8,11 @@ register = template.Library()
 
 @register.simple_tag()
 def get_categories():
-    ''' Вывод всех категориев в блог '''
-    return Category.objects.annotate(category_count=Count('categories')).all()
+    ''' Вывод всех категориев '''
+    return Category.objects.annotate(category_count=Count('post')).all()
+
+
+@register.simple_tag()
+def get_tags():
+    ''' Вывод всех тегов '''
+    return Tag.objects.all()
