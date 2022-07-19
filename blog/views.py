@@ -2,7 +2,7 @@ from typing import List
 from django.shortcuts import render
 from blog.models import *
 
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 
 class HomeListView(ListView):
@@ -44,4 +44,9 @@ class Search(ListView):
         context = super().get_context_data(*args, **kwargs)
         context['q'] = self.request.GET.get('q')
         return context
-        
+
+
+class PostDetailView(DetailView):
+    model = Post
+    slug_url_kwarg = 'slug'
+    template_name = 'blog/post_detail.html'

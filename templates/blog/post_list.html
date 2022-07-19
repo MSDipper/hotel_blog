@@ -24,25 +24,31 @@
         <div class="row">
           <div class="col-lg-8 ftco-animate">
           	<div class="row">
-              {% for post in post_list %}
-                <div class="col-md-6 ftco-animate">
-                  <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20" style="background-image: url({{ post.photo.url }});">
-                    </a>
-                    <div class="text d-flex py-4">
-                      <div class="meta mb-3">
-                        <div><a href="#">{{ post.create_at }}</a></div>
-                        <div><a href="#">{{ post.user }}</a></div>
-                        <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                      </div>
-                      <div class="desc pl-3">
-                        <h3 class="heading"><a href="#">{{ post.title }}</a></h3>
+              {% if post_list %}
+                {% for post in post_list %}
+              
+                  <div class="col-md-6 ftco-animate">
+                    <div class="blog-entry">
+                      <a href="{{ post.get_absolute_url }}" class="block-20" style="background-image: url({{ post.photo.url }});">
+                      </a>
+                      <div class="text d-flex py-4">
+                        <div class="meta mb-3">
+                          <div><a href="#">{{ post.create_at }}</a></div>
+                          <div><a href="#">{{ post.user }}</a></div>
+                          <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                        </div>
+                        <div class="desc pl-3">
+                          <h3 class="heading"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              {% endfor %}
+                {% endfor %}
+              {% else %}
+                <h1>Нет постов</h1>
+              {% endif %}
 		        </div>
+           
 		        <div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27">
@@ -69,37 +75,25 @@
           </div> 
           
           <!-- .col-md-8 -->
-          <div class="col-lg-4 sidebar ftco-animate">
-            <div class="sidebar-box">
-              <form action="{% url 'search' %}" method='get' class="search-form">
-                <div class="form-group">
-                  <button type='submit' class="icon icon-search" style="border: 1px solid #FFFFFF;"></button>
-                  <input type="text" name='q' class="form-control" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
-            </div>
 
-            <div class="sidebar-box ftco-animate">
-            	<h3>Categories</h3>
-              <ul class="categories">
-                {% get_categories as categories %}
-                  {% for category in categories %}
-                    <li><a href="{% url 'get_category' category.slug %}">{{ category.name }} <span>{{ category.category_count  }}</span></a></li>
-                  {% endfor %}
-              </ul>
-            </div>
 
-{% get_popular_articles_post count=4 %}
+          <!-- search  -->
+            {% get_search %}
+          <!-- end_search -->
 
-            <div class="sidebar-box ftco-animate">
-              <h3>Tag Cloud</h3>
-              <ul class="tagcloud">
-                {% get_tags as tags %}
-                {% for tag in tags %}
-                  <a href="{% url 'get_tag' tag.slug %}" class="tag-cloud-link">{{ tag.name }}</a>
-                {% endfor %}
-              </ul>
-            </div>
+            <!-- all_categories -->
+              {% get_categories %}
+            <!-- end_all_categories -->
+
+            <!-- all_popular_articles -->
+              {% get_popular_articles_post count=4 %}
+            <!-- end_all_popular_articles -->
+            
+            
+            <!-- tags -->
+              {% get_tags %}
+            <!-- endtags -->
+            
 
 						<div class="sidebar-box subs-wrap">
 							<h3>Subcribe to our Newsletter</h3>

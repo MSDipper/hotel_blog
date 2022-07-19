@@ -2,6 +2,10 @@ from email import message
 from unicodedata import category
 from django.contrib.auth.models import User
 from django.db import models
+from ckeditor.fields import RichTextField
+
+from django.urls import reverse
+
 
 class Category(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=100)
@@ -34,6 +38,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, verbose_name='Автор', on_delete=models.SET_NULL, blank=True, null=True)
     photo = models.ImageField(upload_to='image/', verbose_name='Фото')
     create_at = models.DateTimeField(auto_now_add=True)
+    description = RichTextField(blank=True, null=True)
     slug = models.SlugField(max_length=150)
     comments = models.ForeignKey("Comment", verbose_name='Коментарии', on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='post', verbose_name='Категория', on_delete=models.SET_NULL, blank=True, null=True)
@@ -42,6 +47,8 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+    def get_absolute_url(self):
+         return reverse("post_single", kwargs={'slug':self.slug})
     
     class Meta:
         verbose_name = 'Пост'
