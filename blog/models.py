@@ -40,7 +40,6 @@ class Post(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
     description = RichTextField(blank=True, null=True)
     slug = models.SlugField(max_length=150)
-    comments = models.ForeignKey("Comment", verbose_name='Коментарии', on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='post', verbose_name='Категория', on_delete=models.SET_NULL, blank=True, null=True)
     tags = models.ManyToManyField(Tag, related_name='post', verbose_name='Теги')
 
@@ -48,7 +47,10 @@ class Post(models.Model):
         return self.title
     
     def get_absolute_url(self):
-         return reverse("post_single", kwargs={'slug':self.slug})
+        return reverse("post_single", kwargs={'slug':self.slug})
+    
+    def get_comment(self):
+        return self.comment.filter(parent__isnull=True)
     
     class Meta:
         verbose_name = 'Пост'
@@ -71,8 +73,12 @@ class Popular(models.Model):
 class Comment(models.Model):
     name = models.CharField(verbose_name='Имя', max_length=150)
     email = models.EmailField(max_length=254)
+    date = models.DateTimeField(auto_now_add=True, verbose_name='Время')
+    image = models.ImageField(verbose_name='Изображения', upload_to='image/', blank=True, null='True')
     message = models.TextField(max_length=500, verbose_name='Текст')
+    parent = models.ForeignKey('self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True)
     slug = models.SlugField(max_length=150)
+    post = models.ForeignKey(Post, related_name='comment', on_delete=models.SET_NULL, blank=True, null=True)
     
     def __str__(self):
         return self.name

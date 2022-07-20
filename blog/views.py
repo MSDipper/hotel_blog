@@ -1,7 +1,10 @@
+from multiprocessing import reduction
+from turtle import pos
 from typing import List
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.views import View
 from blog.models import *
-
+from blog.forms import *
 from django.views.generic import ListView, DetailView
 
 
@@ -50,3 +53,16 @@ class PostDetailView(DetailView):
     model = Post
     slug_url_kwarg = 'slug'
     template_name = 'blog/post_detail.html'
+
+
+class AddComment(View):
+    def post(self, request, pk):
+        form = CommentForm(request.POST)
+        post = Post.objects.get(id=pk)
+        if form.is_valid():
+            form = form.save(commit=False)
+            if request.POST.get("parent", None):
+                form.parent_id = int(request.POST.get("parent"))
+            form.post = post
+            form.save()
+        return redirect(post.get_absolute_url())
