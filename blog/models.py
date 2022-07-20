@@ -77,7 +77,7 @@ class Comment(models.Model):
     image = models.ImageField(verbose_name='Изображения', upload_to='image/', blank=True, null='True')
     message = models.TextField(max_length=500, verbose_name='Текст')
     parent = models.ForeignKey('self', verbose_name="Родитель", on_delete=models.SET_NULL, blank=True, null=True)
-    slug = models.SlugField(max_length=150)
+    slug = models.SlugField(max_length=150, blank=True, null='True')
     post = models.ForeignKey(Post, related_name='comment', on_delete=models.SET_NULL, blank=True, null=True)
     
     def __str__(self):
