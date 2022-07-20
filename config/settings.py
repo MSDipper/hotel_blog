@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
     
     'blog.apps.BlogConfig',
+    'rooms.apps.RoomsConfig',
 ]
 
 MIDDLEWARE = [
