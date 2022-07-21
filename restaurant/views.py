@@ -5,9 +5,11 @@ from restaurant.models import *
 
 class RestaurantListView(ListView):
     model = RangeMenu
-    context_object_name = 'range_list'
     template_name = 'restaurant/rangemenu_list.html'
     
+
+class GetCategoryMenuListView(ListView):
+
     def get_queryset(self):
         return RangeMenu.objects.filter(category_menu__slug=self.kwargs.get('slug')).select_related('category_menu')
         
