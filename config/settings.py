@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     
     'ckeditor',
     
+    'amenities.apps.AmenitiesConfig',
     'blog.apps.BlogConfig',
     'rooms.apps.RoomsConfig',
     'restaurant.apps.RestaurantConfig',
+
 ]
 
 MIDDLEWARE = [
