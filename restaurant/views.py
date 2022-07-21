@@ -1,3 +1,15 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from restaurant.models import *
 
-# Create your views here.
+
+class RestaurantListView(ListView):
+    model = RangeMenu
+    context_object_name = 'range_list'
+    template_name = 'restaurant/rangemenu_list.html'
+    
+    def get_queryset(self):
+        return RangeMenu.objects.filter(category_menu__slug=self.kwargs.get('slug')).select_related('category_menu')
+        
+
+

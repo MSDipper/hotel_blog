@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% load restaurant_tag %}
+    
+{% block content %}
+
+    <section class="home-slider js-fullheight owl-carousel">
+      <div class="slider-item js-fullheight" style="background-image:url(/static/images/bg_3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	<h1 class="mb-3 mt-2 bread">Restaurants</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Restaurants</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-section ftco-menu">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Discover</span>
+            <h2 class="mb-4">Our Restaurants</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </div>
+        </div>
+    		<div class="row d-md-flex">
+	    		<div class="col-lg-12 ftco-animate p-md-5">
+		    		<div class="row">
+		          <div class="col-md-12 nav-link-wrap mb-5">
+		            <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+						{% get_categories_menu as categories %}
+						{% for category in categories %}
+						<a class="nav-link" href="{% url 'restaurant' category.slug %}">{{ category.name }}</a>{% endfor %}
+		            </div>
+		          </div>
+		          <div class="col-md-12 d-flex align-items-center">
+		            
+		            <div class="tab-content ftco-animate" id="v-pills-tabContent">
+
+		              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+		              	<div class="row">
+							{% for range in range_list %}
+								<div class="col-md-4 text-center">
+									<div class="menu-wrap">
+										<a href="#" class="menu-img img mb-4" style="background-image: url({{ range.image.url }});"></a>
+										<div class="text">
+											<h3><a href="#">{{ range.title }}</a></h3>
+											<p class="rate">
+														<span class="icon-star"></span>
+														<span class="icon-star"></span>
+														<span class="icon-star"></span>
+														<span class="icon-star"></span>
+														<span class="icon-star-half-full"></span>
+													</p>
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+											<p class="price"><span>$2.90</span></p>
+											<p><a href="#" class="btn-customize">Add to cart</a></p>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+		              	</div>
+		              </div>
+
+		              <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab">
+		                <div class="row">
+							{% for range in object_list %}
+								<div class="col-md-4 text-center">
+									<div class="menu-wrap">
+										<a href="#" class="menu-img img mb-4" style="background-image: url({{ range.image.url }});"></a>
+										<div class="text">
+											<h3><a href="#">{{ range.title }}</a></h3>
+											<p class="rate">
+														<span class="icon-star"></span>
+														<span class="icon-star"></span>
+														<span class="icon-star"></span>
+														<span class="icon-star"></span>
+														<span class="icon-star-half-full"></span>
+													</p>
+											<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+											<p class="price"><span>$2.90</span></p>
+											<p><a href="#" class="btn-customize">Add to cart</a></p>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+		              	</div>
+		              </div>
+
+		              <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab">
+		                <div class="row">
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-1.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Hot Cake Honey</a></h3>
+		              					<p class="rate">
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star-half-full"></span>
+						        				</p>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>$2.90</span></p>
+		              					<p><a href="#" class="btn-customize">Add to cart</a></p>
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-2.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Hot Cake Honey</a></h3>
+		              					<p class="rate">
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star-half-full"></span>
+						        				</p>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>$2.90</span></p>
+		              					<p><a href="#" class="btn-customize">Add to cart</a></p>
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-3.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Hot Cake Honey</a></h3>
+		              					<p class="rate">
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star-half-full"></span>
+						        				</p>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>$2.90</span></p>
+		              					<p><a href="#" class="btn-customize">Add to cart</a></p>
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-4.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Hot Cake Honey</a></h3>
+		              					<p class="rate">
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star-half-full"></span>
+						        				</p>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>$2.90</span></p>
+		              					<p><a href="#" class="btn-customize">Add to cart</a></p>
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-5.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Hot Cake Honey</a></h3>
+		              					<p class="rate">
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star-half-full"></span>
+						        				</p>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>$2.90</span></p>
+		              					<p><a href="#" class="btn-customize">Add to cart</a></p>
+		              				</div>
+		              			</div>
+		              		</div>
+		              		<div class="col-md-4 text-center">
+		              			<div class="menu-wrap">
+		              				<a href="#" class="menu-img img mb-4" style="background-image: url(images/dessert-6.jpg);"></a>
+		              				<div class="text">
+		              					<h3><a href="#">Hot Cake Honey</a></h3>
+		              					<p class="rate">
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star"></span>
+						        					<span class="icon-star-half-full"></span>
+						        				</p>
+		              					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+		              					<p class="price"><span>$2.90</span></p>
+		              					<p><a href="#" class="btn-customize">Add to cart</a></p>
+		              				</div>
+		              			</div>
+		              		</div>
+		              	</div>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+    	</div>
+    </section>
+{% endblock content %}
