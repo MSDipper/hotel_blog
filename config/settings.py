@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'rooms.apps.RoomsConfig',
     'restaurant.apps.RestaurantConfig',
+    'contact.apps.ContactConfig',
 
 ]
 
