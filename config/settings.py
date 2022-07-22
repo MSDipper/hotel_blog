@@ -40,12 +40,13 @@ INSTALLED_APPS = [
     
     'ckeditor',
     
+    'telebot.apps.TelebotConfig',
     'about.apps.AboutConfig',
     'amenities.apps.AmenitiesConfig',
     'blog.apps.BlogConfig',
     'rooms.apps.RoomsConfig',
     'restaurant.apps.RestaurantConfig',
-    'contact.apps.ContactConfig',
+    # 'contact.apps.ContactConfig',
 
 ]
 
