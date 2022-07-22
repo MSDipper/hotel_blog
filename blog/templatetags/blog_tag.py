@@ -6,20 +6,8 @@ from django.db.models import Count
 
 register = template.Library()
 
-# @register.simple_tag()
-# def get_categories():
-#     ''' Вывод всех категориев '''
-#     return Category.objects.annotate(category_count=Count('post')).all()
 
 
-@register.simple_tag()
-def get_tags():
-    ''' Вывод всех тегов '''
-    return Tag.objects.all()
-
-# @register.inclusion_tag('blog/include/tags/popular_articles.html')
-# def get_popular_articles_post():
-#     return Category.objects.all()
 
 
 @register.inclusion_tag('blog/include/tags/popular_articles.html')

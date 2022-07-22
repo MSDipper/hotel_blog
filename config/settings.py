@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     'ckeditor',
     
+    'about.apps.AboutConfig',
     'amenities.apps.AmenitiesConfig',
     'blog.apps.BlogConfig',
     'rooms.apps.RoomsConfig',

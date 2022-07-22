@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load about_tag %}
+{% block content %}
+
+    <section class="home-slider js-fullheight owl-carousel">
+      <div class="slider-item js-fullheight" style="background-image:url(/static/images/bg_3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	<h1 class="mb-3 mt-2 bread">About Me</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>About Me</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-section ftc-no-pb ftc-no-pt bg-light">
+			<div class="container">
+				<div class="row">
+          {% for about in object_list %}
+            <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url({{ about.image.url }});">
+              <a href="{{ about.video.url }}" class="icon d-flex justify-content-center align-items-center">
+                <span class="icon-play"></span>
+              </a>
+            </div>
+            <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
+              <div class="heading-section pt-md-5 pl-md-5 mb-5">
+                <div class="ml-md-0">
+                  <span class="subheading">Welcome to islaGrande Hotel</span>
+                  <h2 class="mb-4">{{ about.title }}</h2>
+                </div>
+              </div>
+              <div class="pb-md-5">
+                <p>{{ about.content }}</p>
+                {% comment %} <ul class="ftco-social d-flex">
+                  <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                  <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                  <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+                  <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                </ul> {% endcomment %}
+              </div>
+            </div>
+          {% endfor %}
+				</div>
+			</div>
+		</section>
+
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          {% get_customer as customers %}
+            {% for customer in customers %}
+              <div class="col-md-7 heading-section ftco-animate text-center">
+                <span class="subheading">Testimony</span>
+                <h2 class="mb-4">{{ customer.customer_about }}</h2>
+                <p>{{ customer.custom_says }}</p>
+              </div>
+            {% endfor %}
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel">
+{% get_customerperson as customerpersons %}
+{% for customerperson in customerpersons %}
+              <div class="item">
+                <div class="testimony-wrap p-4 pb-5 text-center">
+                  <div class="user-img mb-5" style="background-image: url({{ customerperson.photo_person.url }})">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                  </div>
+                  <div class="text">
+                  	<p class="rate">
+		        					<span class="icon-star"></span>
+		        					<span class="icon-star"></span>
+		        					<span class="icon-star"></span>
+		        					<span class="icon-star"></span>
+		        					<span class="icon-star-half-full"></span>
+		        				</p>
+                    <p class="mb-5 pl-4 line">{{ customerperson.info_person }}</p>
+                    <p class="name">{{ customerperson.name }}</p>
+                    <span class="position">Guest from {{ customerperson.country_from }}</span>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock content %}
