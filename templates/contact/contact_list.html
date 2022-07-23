@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="home-slider js-fullheight owl-carousel">
+      <div class="slider-item js-fullheight" style="background-image:url(/static/images/bg_3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	<h1 class="mb-3 mt-2 bread">Contact</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+		<section class="ftco-section contact-section">
+      <div class="container">
+        <di class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="heading">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          {% for address_date in object_list %}
+            <div class="col-md-3 d-flex">
+              <div class="con align-self-stretch p-3">
+                <p><span>Address:</span> {{ address_date.address }}</p>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div class="con align-self-stretch p-3">
+                <p><span>Phone:</span> <a href="tel://1234567920">{{ address_date.phone }}</a></p>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div class="con align-self-stretch p-3">
+                <p><span>Email:</span> <a href="{{ address_date.email }}">{{ address_date.email }}</a></p>
+              </div>
+            </div>
+            <div class="col-md-3 d-flex">
+              <div class="con align-self-stretch p-3">
+                <p><span>Website</span> <a href="#">{{ address_date.website }}</a></p>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+{% endblock content %}
