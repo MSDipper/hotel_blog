@@ -1,6 +1,4 @@
-from multiprocessing import reduction
-from turtle import pos
-from typing import List
+
 from django.shortcuts import redirect, render
 from django.views import View
 from blog.models import *
